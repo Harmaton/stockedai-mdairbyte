@@ -3,7 +3,7 @@ import { Database } from "duckdb-async";
 
 @Injectable()
 export class MotherduckService {
-    private async createMotherDuck() {
+    private async InitializeMotherduckConnection() {
         try {
             const token = process.env.MOTHERDUCK_API_TOKEN;
 
@@ -19,20 +19,11 @@ export class MotherduckService {
             console.log('MD Connection established -->', con);
             return con;
         } catch (error) {
-            console.error('Error in createMotherDuck:', error.message);
+            console.error('Error in Connection:', error.message);
             throw error; 
         }
     }
 
-    public async fetchdb() {
-        try {
-            const db = await this.createMotherDuck();
-            return db;
-        } catch (error) {
-            console.error('Error in fetchdb:', error.message);
-            throw error; 
-        }
-    }
 
 
 }
