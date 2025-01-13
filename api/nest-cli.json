@@ -3,6 +3,18 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true
+  },
+  "projects": {
+    "drizzle": {
+      "type": "library",
+      "root": "libs/drizzle",
+      "entryFile": "index",
+      "sourceRoot": "libs/drizzle/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/drizzle/tsconfig.lib.json"
+      }
+    }
   }
 }
