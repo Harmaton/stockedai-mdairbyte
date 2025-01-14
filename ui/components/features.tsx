@@ -149,10 +149,10 @@ export default function StockCards() {
         <div className="mt-12 bg-blue-600 rounded-xl p-8 text-white">
           <div className="flex items-center gap-4 mb-4">
             <Search className="h-8 w-8" />
-            <h3 className="text-2xl font-bold">Analyze first, look before you leap</h3>
+            <h3 className="text-2xl font-bold">look before you leap</h3>
           </div>
           <p className="text-xl mb-6">
-            Our AI-powered analysis helps you make informed decisions. Don't just follow the crowd - understand the market dynamics before making your move.
+            Our AI-powered analysis helps you make informed decisions. Don&apos;t just follow the crowd - understand the market dynamics before making your move.
           </p>
           <button className="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
             Start analyzing
