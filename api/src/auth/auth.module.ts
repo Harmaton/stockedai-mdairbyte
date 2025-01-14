@@ -8,7 +8,6 @@ import { GoogleStrategy } from './guards/google-oauth.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
 
-
 @Module({
 imports: [DrizzleModule,
   ConfigModule.forRoot({isGlobal: true}),

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Controller, Get,  Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Response } from 'express'; 
 
@@ -16,4 +16,5 @@ export class AuthController {
       res.status(500).send({ success: false, message: err.message });
     }
   }
+
 }

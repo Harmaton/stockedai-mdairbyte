@@ -4,7 +4,6 @@ import { CoinAPICONFIG, MotherDuckConfigRequest, SyncCONFIG, TokenRequest, Token
 
 @Injectable()
 export class AirbyteService {
-
 private async generateToken(credentials: TokenRequest) : Promise<TokenResponse>{
    try {
       const options = {
@@ -42,7 +41,7 @@ private async generateToken(credentials: TokenRequest) : Promise<TokenResponse>{
    }
 }}
 
- public async listdestination(token_data: TokenRequest){
+async listdestination(token_data: TokenRequest){
     try {
       const tokenResponse = await this.generateToken(token_data)
 
@@ -76,7 +75,7 @@ private async generateToken(credentials: TokenRequest) : Promise<TokenResponse>{
     }
  }
 
- public async listsources(token_data: TokenRequest){
+  async listsources(token_data: TokenRequest){
    try {
 
      const tokenResponse = await this.generateToken(token_data)
@@ -114,7 +113,7 @@ private async generateToken(credentials: TokenRequest) : Promise<TokenResponse>{
 }
 
 
- public async configDestinationMDuck(config: MotherDuckConfigRequest, token_data: TokenRequest){
+  async configDestinationMDuck(config: MotherDuckConfigRequest, token_data: TokenRequest){
    try {
       const tokenResponse = await this.generateToken(token_data)
       if (!tokenResponse?.access_token) {
@@ -147,7 +146,7 @@ private async generateToken(credentials: TokenRequest) : Promise<TokenResponse>{
    }
  }
 
- public async configSourceCoinAPI(config: CoinAPICONFIG){
+ async configSourceCoinAPI(config: CoinAPICONFIG){
    try {
       const tokenResponse = await this.generateToken({
          client_id: `${process.env.AIRBYTE_CLIENT_ID}`,
@@ -176,7 +175,7 @@ private async generateToken(credentials: TokenRequest) : Promise<TokenResponse>{
    }
  }
 
- public async configSourcePolygon(){
+  async configSourcePolygon(){
    try {
       
    } catch (error) {
@@ -184,7 +183,15 @@ private async generateToken(credentials: TokenRequest) : Promise<TokenResponse>{
    }
  }
 
- public async runSync(config: SyncCONFIG){
+ async configSourceFinanceAPI(){
+   try {
+      
+   } catch (error) {
+      
+   }
+ }
+
+  async runSync(config: SyncCONFIG){
    try {
       const tokenResponse = await this.generateToken({
          client_id: `${process.env.AIRBYTE_CLIENT_ID}`,
@@ -210,8 +217,8 @@ private async generateToken(credentials: TokenRequest) : Promise<TokenResponse>{
          }
        }
 
-const sync = await axios(options)
-return sync.data
+      const sync = await axios(options)
+      return sync.data
 
    } catch (error) {
       console.log(error)
