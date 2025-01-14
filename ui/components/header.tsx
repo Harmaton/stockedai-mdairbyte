@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ChartBar, Menu, X } from 'lucide-react'
+import { Button } from './ui/button'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -18,16 +19,48 @@ export default function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2">
         <ChartBar className="h-8 w-8" />
-        <span className="text-xl font-semibold text-blue-500">StockedAI</span>
+        <span className="text-xl font-semibold text-blue-500">Stocked AI</span>
         </Link>
         <nav className="hidden md:block">
-          <ul className="flex space-x-4">
-            <li><Link href="#features" className="hover:text-blue-200 transition-colors">Learn</Link></li>
-            <li><Link href="#" className="hover:text-blue-200 transition-colors">Pricing</Link></li>
-            <li><Link href="#" className="hover:text-blue-200 transition-colors">Advanced tools</Link></li>
-            <li><Link href="#cta" className="bg-blue-500 hover:bg-black text-white px-4 py-2 rounded transition-colors">Get Started</Link></li>
-          </ul>
-        </nav>
+  <ul className="flex items-center gap-8">
+    <li>
+      <Link 
+        href="#features" 
+        className="text-gray-500 hover:text-blue-400 transition-all duration-300 font-medium"
+      >
+        Learn
+      </Link>
+    </li>
+    <li>
+      <Link 
+        href="#" 
+        className="text-gray-500 hover:text-blue-400 transition-all duration-300 font-medium"
+      >
+        Pricing
+      </Link>
+    </li>
+    <li>
+      <Link 
+        href="#" 
+        className="text-gray-500 hover:text-blue-400 transition-all duration-300 font-medium"
+      >
+        Advanced tools
+      </Link>
+    </li>
+    <li>
+    <Link href={'/dashboard'}>
+      <Button
+        type="submit"
+        className="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-medium
+                 hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5
+                 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Start Analyzing Today
+      </Button>
+     </Link>
+    </li>
+  </ul>
+</nav>
         <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -43,7 +76,14 @@ export default function Header() {
             <li><Link href="#features" className="hover:text-blue-200 transition-colors">Features</Link></li>
             <li><Link href="#" className="hover:text-blue-200 transition-colors">Pricing</Link></li>
             <li><Link href="#" className="hover:text-blue-200 transition-colors">About</Link></li>
-            <li><Link href="#cta" className="bg-blue-500 hover:bg-black text-white px-4 py-2 rounded transition-colors">Get Started</Link></li>
+            <Link href={'/dashboard'}>
+            <Button
+                type="submit"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Start Analyzing Today
+              </Button>
+              </Link>
           </ul>
         </motion.nav>
       )}

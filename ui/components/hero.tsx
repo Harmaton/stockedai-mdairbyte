@@ -1,21 +1,14 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { TrendingUp, Database, Bot } from 'lucide-react'
+import { Button } from './ui/button'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Hero() {
-  const [email, setEmail] = useState('')
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // Handle email submission here
-    console.log('Email submitted:', email)
-    setEmail('')
-  }
-
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white text-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -29,22 +22,61 @@ export default function Hero() {
             <p className="text-xl text-gray-600 mb-8">
               StockedAI is the most trusted platform for investors and financial advisors to analyze, trade, and manage stocks with cutting-edge AI technology.
             </p>
-            <form onSubmit={handleSubmit} className="flex gap-2 mb-8">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Get Started
-              </button>
-            </form>
+            <div className="flex flex-col gap-6 mb-8">
+  {/* Users preview section */}
+  <div className="flex items-center w-full  justify-center">
+    <div className="flex -space-x-4">
+      {/* User avatars - replace src with actual user images */}
+      <Image 
+        className="w-10 h-10 rounded-full border-2 border-white"
+        src="/profiles/anna.jpg" 
+        alt="User avatar"
+        width={50}
+        height={50}
+      />
+      <Image 
+        className="w-10 h-10 rounded-full border-2 border-white"
+        src="/profiles/lima.jpg" 
+        alt="User avatar"
+        width={50}
+        height={50}
+      />
+      <Image 
+        className="w-10 h-10 rounded-full border-2 border-white"
+        src="/profiles/ketut.jpg" 
+        alt="User avatar"
+        width={50}
+        height={50}
+      />
+      <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-100 text-sm font-medium">
+        +2k
+      </div>
+    </div>
+    
+    {/* Rating and user count */}
+    <div className="ml-4 ">
+      <div className="flex items-center gap-1">
+        <span className="text-yellow-400">★★★★★</span>
+        <span className="font-medium">4.9</span>
+      </div>
+      <p className="text-sm text-gray-600">
+        from 2,000+ active analysts
+      </p>
+    </div>
+  </div>
+
+  {/* CTA Button */}
+ <Link href='/dashboard' className='w-full flex justify-center'>
+  <Button
+    className="bg-blue-500 text-white px-8 py-4 rounded-xl text-lg
+               hover:bg-blue-400 hover:shadow-xl transform hover:-translate-y-0.5
+               transition-all duration-300 font-semibold w-3/4 max-w-2xl
+               focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+  >
+    Join 2,000+ Analysts Today
+  </Button>
+</Link>
+</div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {  Search } from 'lucide-react'
+import { Button } from './ui/button'
 
 const stocks = [
   { id: 1, name: 'Apple', symbol: 'AAPL', price: 185.92, change: 2.46 },
@@ -154,9 +155,14 @@ export default function StockCards() {
           <p className="text-xl mb-6">
             Our AI-powered analysis helps you make informed decisions. Don&apos;t just follow the crowd - understand the market dynamics before making your move.
           </p>
-          <button className="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
-            Start analyzing
-          </button>
+          
+          <Button className="bg-white text-blue-600 mr-2 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
+            Start analyzing Stocks
+          </Button>
+          <Button className="bg-white text-red-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
+            Analyze your Portfolio
+          </Button>
+        
         </div>
       </div>
     </section>

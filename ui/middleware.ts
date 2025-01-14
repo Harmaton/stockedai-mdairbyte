@@ -20,7 +20,7 @@ export function middleware(req: NextRequest) {
   if (
     !token &&
     !tokenFromOauth &&
-    req.nextUrl.pathname.startsWith("/dash")
+    req.nextUrl.pathname.startsWith("/dashboard")
   ) {
     console.log("cant enter recruiter ");
     return NextResponse.redirect(new URL("/login", req.url));

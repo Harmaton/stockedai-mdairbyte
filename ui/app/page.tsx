@@ -13,7 +13,7 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
-        <CTA />
+
         <Compliance />
       </main>
       <Footer />
