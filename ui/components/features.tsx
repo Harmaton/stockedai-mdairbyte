@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { TrendingUp, TrendingDown, Search } from 'lucide-react'
+import {  Search } from 'lucide-react'
 
 const stocks = [
   { id: 1, name: 'Apple', symbol: 'AAPL', price: 185.92, change: 2.46 },

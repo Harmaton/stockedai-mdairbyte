@@ -14,7 +14,7 @@ export default function Compliance() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-4">Built on Trust</h2>
-          <p className="text-xl text-gray-600">Your Data Stays Your Data</p>
+          <p className="text-xl text-gray-600">use your own data to beat volatility</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
