@@ -1,37 +1,29 @@
-# Use the official Node.js image as a base image
-FROM node:18-alpine
+# Use debian-based Node.js image instead of alpine
+FROM node:20
 
 # Install pnpm globally
 RUN npm install -g pnpm
 
-# Set the working directory inside the container
+# Create app directory
 WORKDIR /usr/src/app
 
-# Copy package.json, pnpm-lock.yaml, and .npmrc if present
+# Copy package files
 COPY package.json pnpm-lock.yaml .npmrc* ./
 
-# Install dependencies using pnpm
-RUN pnpm install --frozen-lockfile
+# Install app dependencies
+RUN pnpm install --frozen-lockfile --prod=false
 
-# Copy the rest of the application code to the working directory
+# Bundle app source
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 8000
+# Copy the .env files
+COPY .env* ./
 
-# Set environment variables (use Docker's build-time ARGs and runtime ENV for flexibility)
-ARG MOTHERDUCK_API_TOKEN
-ARG AIRBYTE_CLIENT_ID
-ARG AIRBYTE_SECRET_ACCESS
-ARG COIN_ENVIRONMENT
-
-ENV MOTHERDUCK_API_TOKEN=${MOTHERDUCK_API_TOKEN}
-ENV AIRBYTE_CLIENT_ID=${AIRBYTE_CLIENT_ID}
-ENV AIRBYTE_SECRET_ACCESS=${AIRBYTE_SECRET_ACCESS}
-ENV COIN_ENVIRONMENT=${COIN_ENVIRONMENT}
-
-# Build the NestJS application
+# Build the application
 RUN pnpm run build
 
-# Start the application
-CMD ["pnpm", "start:prod"]
+# Expose the port
+EXPOSE 3001
+
+# Start the server
+CMD ["pnpm", "run", "start:prod"]
