@@ -1,15 +1,22 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import ChartComponent from './chart';
 
-
 export default function Page() {
   const [activeTab, setActiveTab] = useState<'SQL' | 'Natural Language'>('SQL');
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(
+    `SELECT 
+    (_airbyte_data->>'o')::NUMERIC AS open_price,
+    (_airbyte_data->>'c')::NUMERIC AS close_price,
+    (_airbyte_data->>'h')::NUMERIC AS high_price,
+    (_airbyte_data->>'l')::NUMERIC AS low_price
+FROM 
+    my_db._airbyte_raw_stock_api
+LIMIT 20;`
+  );
   const [response, setResponse] = useState<string | null>(null);
 
-  // Function to handle query submission
   const handleQuerySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -21,7 +28,6 @@ export default function Page() {
         apiUrl = 'http://localhost:3001/api/motherduck/run_ai_query';
       }
 
-      // Send the query to the appropriate endpoint
       const res = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -32,7 +38,7 @@ export default function Page() {
 
       if (res.ok) {
         const data = await res.json();
-        setResponse(JSON.stringify(data, null, 2)); // Format the response for display
+        setResponse(JSON.stringify(data, null, 2));
       } else {
         setResponse('Error: Failed to execute query.');
       }
@@ -89,9 +95,20 @@ export default function Page() {
               id="query"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              rows={4}
+              rows={6}
               className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
-              placeholder={activeTab === 'SQL' ? 'SELECT * FROM table_name;' : 'Find all users who joined last month.'}
+              placeholder={
+                activeTab === 'SQL'
+                  ? `SELECT 
+    (_airbyte_data->>'o')::NUMERIC AS open_price,
+    (_airbyte_data->>'c')::NUMERIC AS close_price,
+    (_airbyte_data->>'h')::NUMERIC AS high_price,
+    (_airbyte_data->>'l')::NUMERIC AS low_price
+FROM 
+    my_db._airbyte_raw_stock_api
+LIMIT 20;`
+                  : 'Find all users who joined last month.'
+              }
               required
             ></textarea>
             <button
@@ -103,24 +120,21 @@ export default function Page() {
           </form>
         </div>
 
-{/* Response Area */}
-<div className="mt-8 bg-gradient-to-r from-blue-100 via-white to-purple-100 rounded-lg shadow-lg p-6">
-  <h2 className="text-lg font-extrabold text-gray-800 mb-4">Response</h2>
-  <div className="mt-4 text-sm">
-    {response ? (
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg shadow-inner overflow-auto max-h-96 border border-gray-700">
-        <code className="text-sm leading-relaxed">
-          {JSON.stringify(response, null, 2)}
-        </code>
-        <ChartComponent data={Array.isArray(response) ? response : JSON.parse(response)} />
-      </pre>
-    ) : (
-      <p className="text-gray-600 italic">No query submitted yet.</p>
-    )}
-  </div>
-</div>
-
-
+        {/* Response Area */}
+        <div className="mt-8 bg-gradient-to-r from-blue-100 via-white to-purple-100 rounded-lg shadow-lg p-6">
+          <h2 className="text-lg font-extrabold text-gray-800 mb-4">Response</h2>
+          <div className="mt-4 text-sm">
+            {response ? (
+              <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg shadow-inner overflow-auto max-h-96 border border-gray-700">
+                <code className="text-sm leading-relaxed">{response}</code>
+                <ChartComponent data={Array.isArray(response) ? response : JSON.parse(response)} />
+              </pre>
+              
+            ) : (
+              <p className="text-gray-600 italic">No query submitted yet.</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
