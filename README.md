@@ -29,8 +29,7 @@ Welcome to **StockADAI**, the ultimate assistant for stock experts. This solutio
 
 
 #### Video
-
-[Video demonstration]([https://link-url-here.org](https://www.loom.com/share/2320474b7abf4d0cbb4e00b9ebba8acb?sid=ae434aff-1b82-498b-9abc-4fc2bbec05b9))
+[Video demonstration](https://www.loom.com/share/2320474b7abf4d0cbb4e00b9ebba8acb?sid=ae434aff-1b82-498b-9abc-4fc2bbec05b9)
 
 
 1. **Data Ingestion**:  
