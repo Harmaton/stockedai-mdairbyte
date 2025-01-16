@@ -64,6 +64,26 @@ STOCKADAI is designed for:
 
 ---
 
+## HOW TO RUN LOCALLY
+  1. clone te repo
+  2. cd to api and ```pnpm install``` then ```pnpm start```  runs on ```port: 3001```
+  3. cd to ui and ```pnpm install``` then ```pnpm dev``` runs on ```port: 3000```
+  4. env variables for the api are as follows : 
+````
+MOTHERDUCK_API_TOKEN=<your_token>
+AIRBYTE_CLIENT_ID=<your_client_id>
+AIRBYTE_SECRET_ACCESS=<your_secret_access>
+COIN_ENVIRONMENT=sandbox
+DATABASE_URL=<your_database_url>
+GOOGLE_CLIENT_ID=<your_google_client_id>
+GOOGLE_CLIENT_SECRET=<your_google_client_secret>
+CALLBACK_URL=http://localhost:3001/api/auth/google/callback
+FRONTEND_URL=http://localhost:3000
+JWT_SECRET=<your_jwt_secret>
+````
+5. alternatively use ```docker build``` and ```docker run```
+
+
 ### #STOCKADAI-MD-Airbyte
 
 Your trusted copilot for the stock market. Let **STOCKADAI** transform your workflow and take your stock expertise to the next level.
