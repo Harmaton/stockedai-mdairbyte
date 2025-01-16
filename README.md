@@ -9,7 +9,8 @@ ATTACH ```'md:_share/my_db/c9abf55d-7ac8-42cd-9730-ab35dcd07eb1';```
 ### LOOM VIDEO
 
 ``` #### Video
-[Video demonstration](https://www.loom.com/share/2320474b7abf4d0cbb4e00b9ebba8acb?sid=ae434aff-1b82-498b-9abc-4fc2bbec05b9)
+1. (https://www.loom.com/share/2320474b7abf4d0cbb4e00b9ebba8acb?sid=ae434aff-1b82-498b-9abc-4fc2bbec05b9)
+2. (https://www.loom.com/share/8e41ed00fdff4db3be9955058b026a45?sid=085781b2-7e19-4e43-8050-02adf9f42b46)
 ```
 ### Architectural Diagram
 
