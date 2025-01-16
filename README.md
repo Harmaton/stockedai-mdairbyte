@@ -2,9 +2,14 @@
 
 Welcome to **StockADAI**, the ultimate assistant for stock experts. This solution empowers you with intelligent insights, aggregating and caching real-time updates from crypto and forex data sources. With **STOCKADAI**, you can make faster, more informed decisions in your work with stocks.
 
----
+### Architectural Diagram
 
-### Key Features
+![architecture diagram](https://github.com/user-attachments/assets/47fe8790-7fd7-4482-b820-03cbf0bdf28c)
+
+---
+# Overview
+
+### Key Features 
 
 - **Real-Time Data Aggregation**:  
   Seamlessly integrates with crypto and forex data sources to provide up-to-date market information.
@@ -21,6 +26,12 @@ Welcome to **StockADAI**, the ultimate assistant for stock experts. This solutio
 ---
 
 ### How It Works
+
+
+#### Video
+
+[Video demonstration]([https://link-url-here.org](https://www.loom.com/share/2320474b7abf4d0cbb4e00b9ebba8acb?sid=ae434aff-1b82-498b-9abc-4fc2bbec05b9))
+
 
 1. **Data Ingestion**:  
    Market data is ingested from multiple crypto and forex sources via **Airbyte connectors**.
