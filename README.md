@@ -2,6 +2,15 @@
 
 Welcome to **StockADAI**, the ultimate assistant for stock experts. This solution empowers you with intelligent insights, aggregating and caching real-time updates from crypto and forex data sources. With **STOCKADAI**, you can make faster, more informed decisions in your work with stocks.
 
+### MOTHERDUCK SHARED DB
+-- Run this snippet to attach database
+ATTACH ```'md:_share/my_db/c9abf55d-7ac8-42cd-9730-ab35dcd07eb1';```
+
+### LOOM VIDEO
+
+``` #### Video
+[Video demonstration](https://www.loom.com/share/2320474b7abf4d0cbb4e00b9ebba8acb?sid=ae434aff-1b82-498b-9abc-4fc2bbec05b9)
+```
 ### Architectural Diagram
 
 ![architecture diagram](https://github.com/user-attachments/assets/47fe8790-7fd7-4482-b820-03cbf0bdf28c)
