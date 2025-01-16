@@ -29,6 +29,18 @@ export class AirbyteController {
         data: sources
       }
     }
+
+    @Get('/list_connections')
+    async listConnections() {
+        const token_data = {
+            client_id: `${process.env.AIRBYTE_CLIENT_ID}`,
+            client_secret:`${process.env.AIRBYTE_SECRET_ACCESS}`
+            }
+      const connections = await this.airbyte.listConnections(token_data)
+      return {
+        data: connections
+      }
+    }
   
     @Post('/setup_destination_motherduck')
     async configureDestinationConnection(@Body() config: MotherDuckConfigRequest){

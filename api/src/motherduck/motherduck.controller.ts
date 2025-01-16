@@ -1,27 +1,26 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { MotherduckService } from './motherduck.service';
+import { queryDTO } from './md.dto';
 
 @Controller('motherduck')
 export class MotherduckController {
    constructor(private readonly mdservice: MotherduckService){}
-    @Get('/run_query')
-    async runQuery(@Body() query: string){
-        const db = ''
-        return db
+
+    @Post('/run_query')
+    async runQuery(@Body() query: queryDTO){
+        const result = await this.mdservice.runSQLQuery(query)
+        return result
     }
 
-    @Get('/run_ai_query')
+    @Post('/run_ai_query')
     async runAIQuery(@Body() query: string){
-        const db = ''
-        return db
-    }
+        // const result = await this.mdservice.runSQLQuery(query)
+        // return result
+    }   
 
-    @Get('/run_ai_query')
-    async runcachedQueries(@Body() query: string){
-        const db = ''
-        return db
+    @Post('/aggregate')
+    async aggregate(){
+        
     }
-
-    
 
 }

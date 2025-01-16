@@ -1,6 +1,6 @@
 'use client'
 import Compliance from "@/components/compliance"
-import CTA from "@/components/cta"
+// import CTA from "@/components/cta"
 import Features from "@/components/features"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
@@ -13,7 +13,6 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
-
         <Compliance />
       </main>
       <Footer />

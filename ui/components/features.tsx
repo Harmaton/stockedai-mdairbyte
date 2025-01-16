@@ -154,15 +154,13 @@ export default function StockCards() {
           </div>
           <p className="text-xl mb-6">
             Our AI-powered analysis helps you make informed decisions. Don&apos;t just follow the crowd - understand the market dynamics before making your move.
-          </p>
-          
+          </p>         
           <Button className="bg-white text-blue-600 mr-2 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
             Start analyzing Stocks
           </Button>
           <Button className="bg-white text-red-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
             Analyze your Portfolio
           </Button>
-        
         </div>
       </div>
     </section>

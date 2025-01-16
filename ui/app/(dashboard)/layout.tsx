@@ -1,7 +1,15 @@
-import React from 'react'
+import { AppSidebar } from "@/components/app-sidebar"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import Header from "./_components/header"
 
-export default function layout() {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div>layout</div>
+    <SidebarProvider>
+      <AppSidebar />
+      <main className="w-full m-auto mt-2">
+        <Header /> 
+        {children}
+      </main>
+    </SidebarProvider>
   )
 }

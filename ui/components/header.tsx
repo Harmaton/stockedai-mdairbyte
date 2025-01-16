@@ -19,7 +19,7 @@ export default function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2">
         <ChartBar className="h-8 w-8" />
-        <span className="text-xl font-semibold text-blue-500">Stocked AI</span>
+        <span className="text-xl font-semibold text-blue-600">Stocked AI</span>
         </Link>
         <nav className="hidden md:block">
   <ul className="flex items-center gap-8">

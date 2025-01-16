@@ -75,6 +75,40 @@ async listdestination(token_data: TokenRequest){
     }
  }
 
+ async listConnections(token_data: TokenRequest){
+   try {
+     const tokenResponse = await this.generateToken(token_data)
+
+     if (!tokenResponse?.access_token) {
+        throw new Error('Failed to obtain access token');
+      }
+       const options = {
+           method: 'GET',
+           url: 'https://api.airbyte.com/v1/connections',
+            headers: {
+               'Content-Type': 'application/json',
+                'accept': 'application/json',
+               'Authorization': `Bearer ${tokenResponse.access_token}`,
+             }
+     }
+
+     const destinations = await axios(options)
+     return destinations.data
+   } catch (error) {
+     if (axios.isAxiosError(error)) {
+        console.error('Airbyte API error:', {
+          status: error.response?.status,
+          message: error.response?.data?.message
+        });
+
+        if (error.response?.status === 401) {
+          throw new Error('Authentication failed - invalid token');
+        }
+      }
+      throw error;
+   }
+}
+
   async listsources(token_data: TokenRequest){
    try {
 
