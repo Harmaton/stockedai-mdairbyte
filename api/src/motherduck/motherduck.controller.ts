@@ -13,9 +13,9 @@ export class MotherduckController {
     }
 
     @Post('/run_ai_query')
-    async runAIQuery(@Body() query: string){
-        // const result = await this.mdservice.runSQLQuery(query)
-        // return result
+    async runAIQuery(@Body() query: queryDTO){
+        const result = await this.mdservice.runAIQuery(query)
+        return result
     }   
 
     @Post('/aggregate')

@@ -49,5 +49,33 @@ async runSQLQuery(query: queryDTO ): Promise<any> {
         throw error;
     }
 }
+async runAIQuery(query: queryDTO): Promise<any> {
+    try {
+        // Extract the query string from the passed object
+        const q = query.query;
+        console.log('Received query string: ', q);
+
+        // Initialize the connection to the database
+        const connection = await this.InitializeMotherduckConnection();
+        console.log('Database connection established:', connection);
+
+        // Set the database context (replace with your actual database name)
+        const databaseName = 'my_db';  
+        await connection.all(`USE ${databaseName};`);
+        console.log(`Switched to database: ${databaseName}`);
+
+        // Execute the query
+        const result = await connection.all(`pragma prompt_query('${q}');`);
+
+        // Log the result of the query execution
+        console.log('Query executed successfully:', result);
+
+        return result;
+    } catch (error) {
+        // Log any errors that occur during query execution
+        console.error('Error executing query:', error.message);
+        throw error;
+    }
+}
 
 }
